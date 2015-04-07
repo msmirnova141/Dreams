@@ -1,4 +1,21 @@
-<div ng-controller="RecallController"> <p>Items in your list:</p> <table ng-repeat="item in items | orderBy:'text'"> <tr> <td id="{{item.name}}" onclick="var y = getTheme(id)" width="100px">{{item.name}} <td id="{{item.theme}}" onclick="var x = getTheme(id)" width="100px">{{item.theme}} <td ng-repeat="symbols in item.symbols" width="100px">{{symbols}} <!-- <td width="150px">{{item.timeStamp}}</td> --> <td> <md-button class="btn-primary" ng-click="deleteItem(item.id)">delete this shittttt</md-button>   </table> <!--   <div id="_giphy_tv"></div> --> <script type="text/javascript">//  function getTheme(item) {
+<div ng-controller="RecallController">
+
+    <p>Items in your list:</p>
+    <table ng-repeat="item in items | orderBy:'text'">
+        <tr>
+        <td id = "{{item.name}}" onclick="var y = getTheme(id)"width="100px">{{item.name}}</td>
+            <td id = "{{item.theme}}" onclick="var x = getTheme(id)"width="100px">{{item.theme}}</td>
+            <td ng-repeat="symbols in item.symbols"width="100px">{{symbols}}</td>
+            <!-- <td width="150px">{{item.timeStamp}}</td> -->
+            <td>
+                <md-button class="btn-primary" ng-click="deleteItem(item.id)">delete this shittttt</md-button>
+            </td> 
+        </tr> 
+    </table>
+
+  <!--   <div id="_giphy_tv"></div> -->
+ <script type="text/javascript">
+//  function getTheme(item) {
    
 //     var x = JSON.stringify(item);
 //      console.log(x);
@@ -10,4 +27,8 @@
 // g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
 // var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
 
-//</script> </div>
+// </script>
+
+
+
+</div>

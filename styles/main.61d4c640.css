@@ -1,0 +1,600 @@
+/* BASIC STYLINGS
+============================================================================= */
+
+html, body 
+{ 
+  padding-top: 0px;
+  font-family: 'Lora';
+  font-size: 18px;
+  color: #3E445B;
+  background:#F5F5F5;
+  height: 100%;
+}
+
+a:hover, a:focus{
+  color: white;
+  text-decoration: none;
+  outline: none;
+
+}
+a:hover, a:hover{
+  color: white;
+  text-decoration: none;
+  outline: none;
+  
+}
+a
+{
+  color: white;
+  outline: none;
+}
+
+h1 
+{
+  font-family: 'Amatic SC';
+  letter-spacing: 0.1em;
+  color: #3E445B;
+  font-size:50px;
+  font-weight: 500;
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+h2 
+{
+  font-family: 'Amatic SC';
+  letter-spacing: 0.1em;
+  color: white;
+  font-size:60px;
+  font-weight: 500;
+  margin-top: 2.5em;
+  margin-bottom: 0;
+  -webkit-text-stroke-width: 0.4px;
+}
+
+h3 
+{
+  font-family: 'Yanone Kaffeesatz';
+  letter-spacing: 0.1em;
+  font-size: 14px!important;
+  margin: 0.3em 0!important;
+}
+
+h4 
+{
+  font-family: 'Yanone Kaffeesatz';
+  letter-spacing: 0.1em;
+  font-size: 40px!important;
+  margin: 0.3em 0!important;
+  color: white;
+}
+
+h5 
+{
+  font-family: 'Yanone Kaffeesatz';
+  letter-spacing: 0.1em;
+  font-size: 16px!important;
+  margin: 0.3em 0!important;
+  -webkit-text-stroke-width: 0.4px;
+}
+
+p
+{
+  font-family:"Lora";
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  color: white;
+  padding: none;
+}
+
+label
+{
+  color: #3E445B;
+}
+
+pre                             
+{ 
+  margin-bottom:20px; 
+}
+
+md-grid-tile{
+  cursor: pointer;
+}
+
+#next 
+{
+  float: right;
+  margin-right: 15px;
+
+}
+
+/*gif background for start page*/
+#gif-bg
+{
+  position: absolute; 
+  height: 100%;
+  left: -70px; 
+  right: 0; 
+  bottom: 0; 
+  top: 0;
+}
+
+/* form styling */
+#form-container
+{ 
+  /*background:#F5F5F5; */
+  margin-bottom:20px;
+}
+
+#form-container .page-header   
+{ 
+  margin:0; 
+  /*padding:30px;*/
+  border-bottom: none;
+}
+
+/* Input Field Styling*/
+.input {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  /*margin: 1em;*/
+  max-width: 1000px;
+  width: calc(100% - 2em);
+  vertical-align: top;
+}
+.input__field {
+  position: relative;
+  display: block;
+  float: right;
+  padding: 0.8em;
+  width: 60%;
+  border: none;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: #aaa;
+  font-weight: bold;
+  font-family: 'Yanone Kaffeesatz';
+  -webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+  outline: none;
+}
+
+.input__label {
+  display: inline-block;
+  float: right;
+  padding: 0 1em;
+  width: 40%;
+  color: #6a7989;
+  font-weight: bold;
+  font-size: 70.25%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input__label-content {
+  position: relative;
+  display: block;
+  padding: 1.6em 0;
+  width: 100%;
+}
+
+.graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: none;
+}
+.input--symbol {
+  margin: 1.1em;
+}
+
+.input__field--symbol {
+  width: 100%;
+  background: transparent;
+  color: #7A7593;
+}
+
+.input__label--symbol {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #7A7593;
+  text-align: left;
+  cursor: text;
+}
+
+.input__label-content--symbol {
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.graphic--symbol {
+  -webkit-transform: scale3d(1, -1, 1);
+  transform: scale3d(1, -1, 1);
+  transition: stroke-dashoffset 0.3s;
+  pointer-events: none;
+
+  stroke: #7A7593;
+  stroke-width: 4px;
+  stroke-dasharray: 962;
+  stroke-dashoffset: 558;
+}
+
+.input__field--symbol:focus + .input__label--symbol,
+.input--filled .input__label--symbol {
+  cursor: default;
+  pointer-events: none;
+}
+
+.input__field--symbol:focus + .input__label--symbol .graphic--symbol,
+.input--filled .graphic--symbol {
+  stroke-dashoffset: 0;
+}
+
+.input__field--symbol:focus + .input__label--symbol .input__label-content--symbol,
+.input--filled .input__label-content--symbol {
+  -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+  transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+}
+
+/* numbered buttons */
+#status-buttons                 
+{  
+
+}
+
+#status-buttons a               
+{ 
+  color: #3E445B; 
+  display:inline-block; 
+  font-size:24px; 
+  margin-right:10px; 
+  text-align:center; 
+  text-transform:uppercase; 
+}
+
+#status-buttons a:hover         
+{ 
+  text-decoration:none; 
+}
+
+#status-buttons span            
+{ 
+  background:#080808; 
+  display:block; 
+  height:30px; 
+  margin:0 auto 10px; 
+  padding-top:5px; 
+  width:30px; 
+  border-radius:50%; 
+}
+
+/* active buttons */
+#status-buttons a.active span   
+{ 
+  background:#00BC8C; 
+}
+.btn 
+{
+  border: none;
+  border-radius: 0px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  display: inline-block;
+  margin: 0px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+/* Start Button */
+.btn-1 
+{
+  border: 2px solid #fff;
+  color: #fff;
+  width: 230px;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
+.btn-1:active 
+{
+  border-color: #17954c;
+  color: #17954c;
+}
+
+.btn-1:hover, .btn-1:active 
+{
+  color: #3E445B;
+  background: #fff;
+}
+
+.btn-1:before 
+{
+  position: absolute;
+  height: 100%;
+  font-size: 125%;
+  line-height: 3.5;
+  color: #fff;
+  top: 0;
+  transition: all 0.3s;
+}
+.btn-1:before 
+{
+  color: #3E445B;
+  opacity: 0;
+}
+
+.btn-1:hover:before 
+{
+  opacity: 1;
+}
+
+/* Refeel Button */
+.btn-2 
+{
+  border: 2px solid #3E445B;
+  color: #3E445B;
+  width: 200px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.btn-2:active 
+{
+  border-color: #3E445B;
+  color: #3E445B;
+}
+
+.btn-2:hover, .btn-2:active 
+{
+  color: #F5F5F5;
+  background: #3E445B;
+}
+
+.btn-2:before 
+{
+  position: absolute;
+  height: 100%;
+  font-size: 125%;
+  line-height: 3.5;
+  color: #3E445B;
+  top: 0;
+  transition: all 0.3s;
+}
+
+.btn-2:before 
+{
+  left: 65%;
+  top: -50%;
+  color: #F5F5F5;
+  opacity: 0;
+}
+
+.btn-2:hover:before 
+{
+  left: 82%;
+  opacity: 1;
+}
+.typcn-arrow-right
+{
+  font-size: 24px;
+}
+
+/*Theme grid styling*/
+.md-grid-list md-grid-tile 
+{
+  background: black;
+  background-repeat: no-repeat;
+}
+.gridListdemoBasicUsage md-grid-list 
+{
+  margin: 8px; 
+}
+.gridListdemoBasicUsage 
+{
+  background: #b9f6ca; 
+}
+#theme-bg
+{
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+}
+#theme-bg:hover:before, #theme-bg:active:before 
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /*background-image: linear-gradient(-45deg, #34495e 0%,#cc6055 100%);*/
+  background: linear-gradient(-45deg, #f3cf3f 0%,#f33f58 100%);
+  opacity: .2;
+}
+
+.effect-jazz h4
+{
+  opacity: 1;
+  -webkit-transform: scale3d(0.85,0.85,1);
+  transform: scale3d(0.85,0.85,1);
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+.effect-jazz:hover h4, .selected h4
+{
+  -webkit-transform: scale3d(1,1,1);
+  transform: scale3d(1,1,1);
+}
+
+.effect-jazz #theme-bg
+{
+  opacity: 1;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+}
+.effect-jazz:hover #theme-bg
+{
+  opacity: 0.95;
+  -webkit-transform: scale3d(1.05,1.02,1.05);
+  transform: scale3d(1.05,1.02,1.05);
+}
+.selected #theme-bg
+{
+  opacity: 1;
+  -webkit-transform: scale3d(1.05,1.02,1.05);
+  transform: scale3d(1.05,1.02,1.05);
+}
+.selected #theme-bg:before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(-45deg, #34495e 0%,#cc6055 100%);
+  opacity: 0.45;
+}
+
+/* VR Styling */
+.popup 
+{
+  position: absolute;
+  width: 340px;
+  height: 180px;
+  left: 50%;
+  top: 50%;
+  margin: -130px 0 0 -190px;
+  visibility: hidden;
+  z-index: 3;
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 0px 20px rgba( 0, 0, 0, 0.6 );
+  border-radius: 3px;
+}
+.popup button 
+{
+  border: 0px;
+  padding: 8px 10px;
+  margin: 5px 0px;
+  border-radius: 1px;
+  cursor: pointer;
+  color: #fff;
+  background: #333;
+  font-size: 15px;
+}
+#extra 
+{
+  position: fixed;
+  width: 100%;
+  color: #ffffff;
+  padding: 5px;
+  z-index: 1;
+}
+#extra2 
+{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 5px;
+  font-size: 13px;
+  text-align: center;
+  z-index: 1;
+}
+#controller 
+{
+  background-color: #fff;
+  color: #000;
+  z-index: 2;
+}
+#controllertype 
+{
+  background-color: #ccc;
+  color: #000;
+}
+#calibrate-compass-popup .figure8 
+{
+  font-family: Verdana;
+  font-size: 120px;
+  margin: -50px 0 -30px 0;
+  padding:    0;
+  text-align: center;
+}
+
+/* ANIMATION STYLINGS
+============================================================================= */
+#signup-form            
+{ 
+  position:relative; 
+  min-height:1000px; 
+  overflow:hidden; 
+  padding:0px; 
+}
+
+/* basic styling for entering and leaving */
+/* enter animation */
+.pt-page-moveFromRight 
+{
+  -webkit-animation: moveFromRight .6s ease both;
+  animation: moveFromRight .6s ease both;
+}
+/* leave animation */
+.pt-page-moveToLeft 
+{
+  -webkit-animation: moveToLeft .6s ease both;
+  animation: moveToLeft .6s ease both;
+}
+
+/*Refeel grid animation*/
+.gridListdemoBasicUsage md-grid-tile 
+{
+  transition: all 400ms ease-out 50ms; 
+}
+element.style{
+  margin-top: 20px;
+}
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@-webkit-keyframes moveToLeft {
+  from { }
+  to { -webkit-transform: translate3d(-200%, 0, 0); }
+}
+@keyframes moveToLeft {
+  from { }
+  to { -webkit-transform: translate3d(-200%, 0, 0); transform: translate3d(-200%, 0, 0); }
+}
+
+/* slide in from the right */
+@-webkit-keyframes moveFromRight {
+  from { -webkit-transform: translate3d(200%, 0, 0); }
+}
+@keyframes moveFromRight {
+  from { -webkit-transform: translate3d(200%, 0, 0); transform: translate3d(200%, 0, 0); }
+}
+/*
+
+===================================================================================*/
