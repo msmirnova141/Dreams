@@ -32,8 +32,8 @@
                     <a>
                         <div class="ca-content">
                             <h3 id = "{{item.name}}" onclick="var y = getTheme(id)"class="ca-main">{{item.name}}</h3>
-                            <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">{{item.theme}}</p>
-                            <p ng-repeat="symbols in item.symbols" class="ca-sub">{{symbols}}</p>
+                            <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">Your theme: {{item.theme}}</p>
+                            <p ng-repeat="symbols in item.symbols" class="ca-sub">Your Symbols{{symbols}}</p>
                             <md-button class="btn-primary ca-main" ng-click="deleteItem(item.id)">delete</md-button>
                         </div>
                     </a>
