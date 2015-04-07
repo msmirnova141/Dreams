@@ -241,6 +241,7 @@ angular.module('dreamsApp')
       'Karma'
     ];
 
+    $scope.step = 1;
    $scope.items = '';
    $scope.name = '';
     var test = function(arr){
