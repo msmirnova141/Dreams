@@ -1,4 +1,37 @@
-<div ng-controller="RecallController"> <div class="text-center" style="margin= 0"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script src="tilt-1.0.min.js"></script>
+<script>
+$(function() {
+	$('#div1').tilt();
+});
+</script>
+<style>
+#div1 {
+	width: 300px;
+	height: 300px;
+	overflow: scroll;
+	border: 1px solid #000;
+	white-space: nowrap;
+}
+</style>
+
+<h2>This will only work in a browser that supports the Device Orientation api (e.g. mobile safari 4.3)</h2>
+<div id="div1">
+<img src="http://farm3.static.flickr.com/2426/4015908157_e41410225a.jpg" height="300">
+<img src="http://farm3.static.flickr.com/2310/2242617759_a1aea05ef8.jpg" height="300">
+<img src="http://farm3.static.flickr.com/2318/2263301554_3130ea03d1.jpg" height="300">
+<img src="http://farm4.static.flickr.com/3057/3035384114_7b742fbea3.jpg" height="300">
+<img src="http://farm1.static.flickr.com/193/464456310_ad5e053b69.jpg" height="300">
+<img src="http://farm3.static.flickr.com/2611/4122869632_d0aff0e1c9.jpg" height="300">
+<img src="http://farm4.static.flickr.com/3003/3046312494_43183b3363.jpg" height="300">
+</div>
+<h1>Tilt your device left and right to scroll images</h1>
+<div id="amt"></div>
+<a href="http://www.maxpigott.com">All images by Max Pigott</a>
+
+
+
+<!-- <div ng-controller="RecallController"> <div class="text-center" style="margin= 0"> 
 <h1 style="margin = 0">REDREAM</h1> </div> </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script type="javascript">
@@ -24,4 +57,4 @@ $("#div1").tilt();
 <img src="http://farm4.static.flickr.com/3003/3046312494_43183b3363.jpg" height="300">
 </div>
 
-<div id="amt"></div>
+<div id="amt"></div> -->
