@@ -30,8 +30,8 @@
                         <a id="dreamList">
                             <div class="ca-content">
                                 <md-button class="btn md-tile-right" ng-click="deleteItem(item.id)" id="delete">x</md-button>
-                                <h3 id = "{{item.name}}"class="ca-main">{{item.name}}</h3>
-                                <p id = "{{item.theme}}"class="ca-sub">{{item.theme}} Dream</p>
+                                <h3 id = "{{item.name}}" onclick="var y = getTheme(id)"class="ca-main">{{item.name}}</h3>
+                                <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">{{item.theme}} Dream</p>
                                 <p style="line-height: 0;">Dream symbols: <span ng-repeat="symbols in item.symbols" class="ca-sub">{{symbols + ' '}}</span></p>
                             </div>
                         </a>

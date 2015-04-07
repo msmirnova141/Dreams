@@ -29,9 +29,9 @@ style="">
     <div>
         <div ng-show= "step == 1">
             <div ng-form ="step1form">
-                <br><h6>Give your dream a name :)</h6></br>
+                <br><h6>Give your name a dream :)</h6></br>
              <span class="input input--symbol">
-                    <input ng-model = "name" required class="input__field input__field--symbol" type="text" id="input-31" />
+                    <input ng-model = "dreamsname" required class="input__field input__field--symbol" type="text" id="input-31" />
                     <label class="input__label input__label--symbol" for="input-31">
                         <svg class="graphic graphic--symbol" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
@@ -39,11 +39,8 @@ style="">
                         <span class="input__label-content input__label-content--symbol"><h5>Title</h5></span>
                     </label>
                 </span>
-                <br><br>
-                </div>
-                <h6>Type in some stuff that occurred in your dream</h6>
 
-            
+            </div>
             <tags-input name="tags"
                       ng-model="dreams.symbols" 
                       add-on-blur="false"
