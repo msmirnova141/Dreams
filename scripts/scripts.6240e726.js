@@ -242,7 +242,6 @@ angular.module('dreamsApp')
     ];
 
     $scope.step = 1;
-    $scope.tags
    $scope.items = '';
    $scope.name = '';
     var test = function(arr){
@@ -256,7 +255,7 @@ angular.module('dreamsApp')
       return newTags;
     };
 
-   $scope.tags = [{text:'cat'}]; 
+   $scope.tags = []; 
 
    $scope.test = function(arr){
      $scope.newTags = [];

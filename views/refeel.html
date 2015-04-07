@@ -33,12 +33,17 @@ style="">
                 <h5>Name</h5><input ng-model = "name" required>
 
             </div>
-            <tags-input name="tags"
+            <div ng-form ="step1form">
+                <br><h5>Type in couple of symbols</h5></br>
+                <h5>Symbols</h5><input ng-model = "tags" required>
+
+            </div>
+<!--             <tags-input name="tags"
                       ng-model="tags" 
                       min-tags="1"
                       max-tags="4"
                       allow-leftover-text="false">
-          </tags-input>
+          </tags-input> -->
           <p>Model:{{tags}}</p>
           <p>name: {{name}}</p>
                 <md-button class="md-primary" ng-disabled="!step1form.$valid" ng-click="step = 2">Next</md-button>
@@ -53,7 +58,7 @@ style="">
             <div>
                 <md-button class="md-primary" ng-click="addItem()">Next</md-button>
             </div>
-            <md-content style="height: 470px; width: 100%;"id="selectme">
+            <md-content>
             <md-grid-list
                     md-cols="1" 
                     md-row-height="200px"
