@@ -2,6 +2,27 @@
 <div  ng-controller="RecallController" 
 style="">
 
+
+    <div id="main-wrapper2" class="wrapper">
+        <div class="menu-icon-container">
+            <div class="menu-icon">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </div>
+        </div>
+
+        <nav id="nav-menu">
+            <div class="menu-list-container" style="margin-bottom: 30px;">
+                <ul class="text-center" style="padding: 0px;">
+                    <li><a href="#/redream">HOME</a></li>
+                    <li><a style="color: #617590;"><b>CREATE NEW</b></a></li>
+                    <li><a href="#/recall">RECALL</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
 <form name="myform" ng-init="step = 1">
     <div class="text-center" style="margin= 0">
         <h1 style="margin = 0;" >REFEEL</h1>
@@ -31,7 +52,7 @@ style="">
             <p>name: {{name}}</p>
             <p>theme: {{theme}}</p> 
             <div>
-                <md-button class="md-primary" ng-click="addItem()">Next</md-button>
+                <md-button class="md-primary" ng-click="addItem()">Submit</md-button>
             </div>
             <md-content style="height: 470px; width: 100%;"id="selectme">
             <md-grid-list
@@ -83,7 +104,7 @@ style="">
             </md-grid-list>
             </md-content>
                 <div>
-                <md-button class="md-primary" ng-click="step = 1">Back</md-button>
+                <md-button class="md-primary"><a href="#/results">View your Dreams</md-button>
                 </div>
         </div>
     </div>
@@ -139,6 +160,14 @@ style="">
         $('.selected').removeClass('selected');
         $(this).addClass('selected');
     });
+        (function(){
+    var $mainWrapper = $("#main-wrapper2");
+
+    $('.menu-icon').click(function(){
+        $(this).toggleClass('active');
+        $mainWrapper.toggleClass('active');
+        });
+    })();
 
     </script>
 </div>
