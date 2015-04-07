@@ -23,25 +23,22 @@
         <h1>RECALL</h1>
         <h5>Which dream do you want to recall?</h5>
     </div>
-
-    <p>Items in your list:</p>
         <div class="container">
-        <div class="content">
-            <ul class="ca-menu">
-                <li ng-repeat="item in items | orderBy:'text'">
-                    <a>
-                        <div class="ca-content">
-                            <h3 id = "{{item.name}}" onclick="var y = getTheme(id)"class="ca-main">{{item.name}}</h3>
-                            <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">Your theme: {{item.theme}}</p>
-                            <p>Dream symbols:</p>
-                            <span ng-repeat="symbols in item.symbols" class="ca-sub">{{symbols}}</span>
-                            <md-button class="btn-primary ca-main" ng-click="deleteItem(item.id)">delete</md-button>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+            <div class="content">
+                <ul class="ca-menu">
+                    <li ng-repeat="item in items | orderBy:'text'">
+                        <a id="dreamList">
+                            <div class="ca-content">
+                                <md-button class="btn md-tile-right" ng-click="deleteItem(item.id)" id="delete">x</md-button>
+                                <h3 id = "{{item.name}}" onclick="var y = getTheme(id)"class="ca-main">{{item.name}}</h3>
+                                <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">{{item.theme}} Dream</p>
+                                <p style="line-height: 0;">Dream symbols: <span ng-repeat="symbols in item.symbols" class="ca-sub">{{symbols + ' '}}</span></p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
   <!--   
     <tr>
         <td id = "{{item.name}}" onclick="var y = getTheme(id)"width="100px">{{item.name}}</td>

@@ -20,7 +20,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngGiphy',
-    'ngTagsInput'
+    'ngTagsInput',
+    'adaptive.scroll'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -220,21 +221,32 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-'use strict';
 
-angular.module('dreamsApp')
-  .controller('ResultsController', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
+
+angular.module('dreamsApp').factory('Giphy', ['$resource', function($resource){
+  return $resource('http://api.giphy.com/v1/gifs/:action', {api_key: 'dc6zaTOxFJmzC'}, {
+    query: {
+      method: 'GET',
+      isArray: true,
+      params: {
+        action: 'search'
+      },
+      transformResponse: function(res){
+        var json = JSON.parse(res);
+        return json.data;
+      }
+    }
   });
+}]);
+angular.module('dreamsApp').controller('mediaCtrl', ['$scope', 'Giphy', function($scope, Giphy){
+  $scope.gifs = Giphy.query({q: 'funny dog'});
+  console.log($scope.gifs)
+}]);  
 
 
 angular.module('dreamsApp')
-  .controller('RecallController', ['$scope', '$location', function ($scope, $location) {
+.controller('RecallController', ['$scope', '$location', function ($scope, $location, $gyroscope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -242,7 +254,10 @@ angular.module('dreamsApp')
     ];
 
    $scope.items = '';
-   $scope.name = '';
+    $scope.item= '';
+
+
+
     var test = function(arr){
        var newTags = [];
         for (var i = 0; i < arr.length; i++) {
@@ -254,7 +269,6 @@ angular.module('dreamsApp')
       return newTags;
     };
 
-   $scope.tags = ['cat']; 
 
    $scope.test = function(arr){
      $scope.newTags = [];
@@ -267,10 +281,15 @@ angular.module('dreamsApp')
    return $scope.newTags;
 
    };
-   $scope.theme = '';
+   $scope.dreams = {};
+
 
     var initCallback = function(){
         getItems();
+    };
+
+    $scope.t = function(){
+ 
     };
  
     var dataStore = new IDBStore('todos', initCallback);
@@ -278,7 +297,16 @@ angular.module('dreamsApp')
     var getItemsSuccess = function(data){
         $scope.items = data;
         console.log(data);
+  
+        // http://jimhoskins.com/2012/12/17/angularjs-and-apply.html 
+        $scope.$apply(); 
+        
+    };
 
+        var getItemSuccess = function(item){
+        $scope.item =item;
+        console.log(item);
+  
         // http://jimhoskins.com/2012/12/17/angularjs-and-apply.html 
         $scope.$apply(); 
         
@@ -293,36 +321,273 @@ angular.module('dreamsApp')
         console.log(getItemsSuccess); 
 
     };
+
+    $scope.getItem = function(item){
+
+      dataStore.get(item,getItemSuccess,errorCallback);
+
+    };
  
     $scope.deleteItem = function(item){
         dataStore.remove(item,getItems,errorCallback);
-    }
+    };
  
     $scope.addItem = function(){
 
+        $scope.itemname = $scope.dreams.name;
+        $scope.itemtheme = $scope.dreams.theme;
+        $scope.itemsymbols = test($scope.dreams.symbols);
+        
 
-        $scope.itemname = $scope.name;
-        $scope.itemtheme = $scope.theme;
-        $scope.itemsymbols = test($scope.tags);
-        console.log($scope.itemsymbols + $scope.itemname + $scope.itemthem );
         dataStore.put({'timeStamp': new Date().getTime(), 'name' : $scope.itemname, 'theme' : $scope.itemtheme, 'symbols': $scope.itemsymbols},getItems,errorCallback); 
-
+        
     };
-
-
-  $scope.getSymbols = function(arr){
-
-    for (var i = 0; i < arr.length; i++) {
-      var value = arr[i];
-      console.log(value); 
-    }
-  };
-
+  
 
 
     }]);
 
 
+angular.module('dreamsApp')
+  .controller('ResultsController', [ '$gyroscope', '$http',  function ($scope, $gyroscope, $http) {
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+
+      ];
+
+
+  
+
+
+  $scope.gyro = {};
+  var start = function(){
+    console.log('start');
+    $gyroscope.watchPosition(15);
+    $scope.gyro.started = true;
+  };
+
+  var stop = function(){
+    console.log('stop');
+    $gyroscope.ignorePosition();
+    $scope.gyro.started = false;
+  };
+
+  $gyroscope.onalpha(function(alphaDiff){
+    console.log(alphaDiff);
+  });
+  $gyroscope.onbeta(function(betaDiff){
+    console.log(betaDiff);
+  });
+  $gyroscope.ongamma(function(gammaDiff){
+    console.log(gammaDiff);
+  });
+  start();
+
+}]);
+
+'use strict';
+
+angular.module('ngGiphy', [])
+  .directive('ngGiphySearch', ['$compile', '$http', '$templateCache', function ($compile, $http, $templateCache) {
+
+    // Create the output object
+
+    var output = {};
+
+
+    // Restrict the directive to Attributes and Elements
+
+    output.restrict = 'AE';
+
+
+    output.scope = {
+      query : '@query',
+      limit : '@limit',
+      offset : '@offset',
+      id: '@id'
+    }
+
+
+    // Retrive the template from the templateUrl parameter or use the default one.
+
+    var getTemplate = function(url){
+      if (angular.isUndefined(url)) {
+          url = 'views/giphy-view.html';
+      };
+
+      var templateLoader = $http.get(url, {cache: $templateCache});
+
+      return templateLoader;
+
+    }
+
+
+    // Create the linker function
+
+    var linker = function(scope, element, attrs) {
+
+
+      // Define if data has been loaded
+
+      scope.dataLoaded = false;
+
+
+      // Define parameters from attributes
+
+      var params = {};
+
+      // TODO create a configurable api_key parameter
+      params.api_key = 'dc6zaTOxFJmzC';
+
+      // Retrive parameters from directive attributes
+      params.q = scope.query.split(',').join('+');
+      params.limit = scope.limit;
+      params.offset = scope.offset;
+
+      var apiSearch = function(){
+
+          $http.get('//api.giphy.com/v1/gifs/search', {params:params})
+            .success(
+              function(data,status){
+
+                if(typeof data=='object'){
+                  scope.results = data.data;
+                  scope.dataLoaded = true;
+                  console.log(data.data);
+                  
+
+                }
+
+              }
+
+            )
+            .error(
+              function(){
+                console.log("Failed to access");
+              }
+            )
+
+      }
+
+      var loader = getTemplate(attrs.templateUrl);
+
+      var promise = loader.success(function(html) {
+          element.replaceWith($compile(html)(scope));
+      }).then(function (response) {
+          apiSearch();
+      });
+    }
+
+
+    output.link = linker;
+
+    return output;
+
+  }]);
+
+/**
+ * JSONP sets up and allows you to execute a JSONP request
+ * @param {String} url  The URL you are requesting with the JSON data
+ * @param {Object} data The Data object you want to generate the URL params from
+ * @param {String} method  The method name for the callback function. Defaults to callback (for example, flickr's is "jsoncallback")
+ * @param {Function} callback  The callback you want to execute as an anonymous function. The first parameter of the anonymous callback function is the JSON
+ *
+ * @example
+ * JSONP('http://twitter.com/users/oscargodson.json',function(json){
+ *  document.getElementById('avatar').innerHTML = '<p>Twitter Pic:</p><img src="'+json.profile_image_url+'">';
+ * });
+ *
+ * @example
+ * JSONP('http://api.flickr.com/services/feeds/photos_public.gne',{'id':'12389944@N03','format':'json'},'jsoncallback',function(json){
+ *  document.getElementById('flickrPic').innerHTML = '<p>Flickr Pic:</p><img src="'+json.items[0].media.m+'">';
+ * });
+ *
+ * @example
+ * JSONP('http://graph.facebook.com/FacebookDevelopers', 'callback', function(json){
+ *  document.getElementById('facebook').innerHTML = json.about;
+ * });
+ */
+(function( window, undefined) {
+  var JSONP = function(url,data,method,callback){
+    //Set the defaults
+    url = url || '';
+    data = data || {};
+    method = method || '';
+    callback = callback || function(){};
+    
+    //Gets all the keys that belong
+    //to an object
+    var getKeys = function(obj){
+      var keys = [];
+      for(var key in obj){
+        if (obj.hasOwnProperty(key)) {
+          keys.push(key);
+        }
+        
+      }
+      return keys;
+    }
+
+    //Turn the data object into a query string.
+    //Add check to see if the second parameter is indeed
+    //a data object. If not, keep the default behaviour
+    if(typeof data == 'object'){
+      var queryString = '';
+      var keys = getKeys(data);
+      for(var i = 0; i < keys.length; i++){
+        queryString += encodeURIComponent(keys[i]) + '=' + encodeURIComponent(data[keys[i]])
+        if(i != keys.length - 1){ 
+          queryString += '&';
+        }
+      }
+      url += '?' + queryString;
+    } else if(typeof data == 'function'){
+      method = data;
+      callback = method;
+    }
+
+    //If no method was set and they used the callback param in place of
+    //the method param instead, we say method is callback and set a
+    //default method of "callback"
+    if(typeof method == 'function'){
+      callback = method;
+      method = 'callback';
+    }
+  
+    //Check to see if we have Date.now available, if not shim it for older browsers
+    if(!Date.now){
+      Date.now = function() { return new Date().getTime(); };
+    }
+
+    //Use timestamp + a random factor to account for a lot of requests in a short time
+    //e.g. jsonp1394571775161 
+    var timestamp = Date.now();
+    var generatedFunction = 'jsonp'+Math.round(timestamp+Math.random()*1000001)
+
+    //Generate the temp JSONP function using the name above
+    //First, call the function the user defined in the callback param [callback(json)]
+    //Then delete the generated function from the window [delete window[generatedFunction]]
+    window[generatedFunction] = function(json){
+      callback(json);
+      delete window[generatedFunction];
+    };  
+
+    //Check if the user set their own params, and if not add a ? to start a list of params
+    //If in fact they did we add a & to add onto the params
+    //example1: url = http://url.com THEN http://url.com?callback=X
+    //example2: url = http://url.com?example=param THEN http://url.com?example=param&callback=X
+    if(url.indexOf('?') === -1){ url = url+'?'; }
+    else{ url = url+'&'; }
+  
+    //This generates the <script> tag
+    var jsonpScript = document.createElement('script');
+    jsonpScript.setAttribute("src", url+method+'='+generatedFunction);
+    document.getElementsByTagName("head")[0].appendChild(jsonpScript)
+  }
+  window.JSONP = JSONP;
+})(window);
 'use strict';
 
 angular.module('ngGiphy', [])

@@ -29,89 +29,96 @@ style="">
     <div>
         <div ng-show= "step == 1">
             <div ng-form ="step1form">
-                <br><h5>Give your name a dream :)</h5></br>
-                <h5>Name</h5><input ng-model = "name" required>
+                <br><h6>Give your name a dream :)</h6></br>
+             <span class="input input--symbol">
+                    <input ng-model = "dreamsname" required class="input__field input__field--symbol" type="text" id="input-31" />
+                    <label class="input__label input__label--symbol" for="input-31">
+                        <svg class="graphic graphic--symbol" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                            <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                        </svg>
+                        <span class="input__label-content input__label-content--symbol"><h5>Title</h5></span>
+                    </label>
+                </span>
 
             </div>
             <tags-input name="tags"
-                      ng-model="tags" 
+                      ng-model="dreams.symbols" 
                       add-on-blur="false"
                       min-tags="1"
                       max-tags="4"
                       allow-leftover-text="false">
           </tags-input>
-          <p>Model:{{tags}}</p>
-          <p>name: {{name}}</p>
-                <md-button class="md-primary" ng-disabled="!step1form.$valid" ng-click="step = 2">Next</md-button>
-
+<!--           <p>Model:{{dreams.symbols}}</p>
+          <p>name: {{dreams.name}}</p> -->
+           <md-button class="btn btn2" ng-disabled="!step1form.$valid" ng-click="step = 2">Next</md-button>
         </div>
         <div ng-show= "step == 2">
             <div ng-form ="step2form"> 
             <br><h5>Choose the theme of your dream</h5></br>
-            <p>Model: {{tags}}</p>
-            <p>name: {{name}}</p>
-            <p>theme: {{theme}}</p> 
+<!--             <p>Model: {{dreams.symbols}}</p>
+            <p>name: {{dreams.name}}</p>
+            <p>theme: {{dreams.theme}}</p>  -->
             <div>
-                <md-button class="md-primary" ng-click="addItem()">Submit</md-button>
-            </div>
-            <md-content style="height: 470px; width: 100%;"id="selectme">
-            <md-grid-list
-                    md-cols="1" 
-                    md-row-height="200px"
-                    md-row-height-sm="150px" 
-                    md-row-height-gt-sm="180px" 
-                    md-row-height-md="220px"
-                    md-row-height-gt-md="220px" 
-                    md-row-height-lg="300px"
-                    md-row-height-gt-lg="300px"
-                    md-gutter="0px" md-gutter-gt-sm="0px" >
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" class="theme" md-rowspan="0.5" md-colspan="1" style="background-image: url(images/naked.59228a2b.jpg);" ng-click="theme = 'naked'">
-                    <h4>NAKED</h4>
-                </md-grid-tile>
-            </div>
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" style="background-image: url(images/death.18955d88.jpg);" ng-click="theme= 'death'">
-                    <h4>DEATH</h4>
-                </md-grid-tile> 
-            </div>             
-                
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" style="background-image: url(images/chasing.b66daff4.jpg);" ng-click="theme= 'chasing'">
-                   <h4>CHASING</h4>
-                </md-grid-tile>
-            </div>
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" style="background-image: url(images/falling.d686b1e7.png);" ng-click="theme = 'falling'">
-                   <h4>FALLING</h4>
-                </md-grid-tile>
-            </div>
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" style="background-image: url(images/cheating.822e7af6.png);" ng-click="theme = 'cheating'">
-                   <h4>CHEATING</h4>
-                </md-grid-tile>            
-            </div>
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" style="background-image: url(images/flying.e9e4295a.jpg);" ng-click="theme= 'flying'">
-                   <h4>FLYING</h4>
-                </md-grid-tile>
-            </div>
-            <div class="effect-jazz">
-                <md-grid-tile id="theme-bg" style="background-image: url(images/random.9dbec0e2.jpg);" ng-click="theme = 'abstract, random'">
-                   <h4>RANDOM</h4>
-                </md-grid-tile>
-            </div>
-            </md-grid-list>
-            </md-content>
-                <div>
-                <md-button class="md-primary"><a href="#/results">View your Dreams</md-button>
+                 <div style="height: 470px; width: 100%;"id="selectme">
+                    <md-grid-list
+                            md-cols="1" 
+                            md-row-height="200px"
+                            md-row-height-sm="150px" 
+                            md-row-height-gt-sm="180px" 
+                            md-row-height-md="220px"
+                            md-row-height-gt-md="220px" 
+                            md-row-height-lg="300px"
+                            md-row-height-gt-lg="300px"
+                            md-gutter="0px" md-gutter-gt-sm="0px" >
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" class="theme" md-rowspan="0.5" md-colspan="1" style="background-image: url(images/naked.59228a2b.jpg);" ng-click="theme = 'Naked'">
+                                <h4>NAKED</h4>
+                            </md-grid-tile>
+                        </div>
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/death.18955d88.jpg);" ng-click="theme= 'Death'">
+                                <h4>DEATH</h4>
+                            </md-grid-tile> 
+                        </div>             
+                            
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/chasing.b66daff4.jpg);" ng-click="theme= 'Chasing'">
+                               <h4>CHASING</h4>
+                            </md-grid-tile>
+                        </div>
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/falling.d686b1e7.png);" ng-click="theme = 'Falling'">
+                               <h4>FALLING</h4>
+                            </md-grid-tile>
+                        </div>
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/cheating.822e7af6.png);" ng-click="theme = 'Cheating'">
+                               <h4>CHEATING</h4>
+                            </md-grid-tile>            
+                        </div>
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/flying.e9e4295a.jpg);" ng-click="theme= 'Flying'">
+                               <h4>FLYING</h4>
+                            </md-grid-tile>
+                        </div>
+                        <div class="effect-jazz">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/random.9dbec0e2.jpg);" ng-click="theme = 'Abstract, Random'">
+                               <h4>RANDOM</h4>
+                            </md-grid-tile>
+                        </div>
+                    </md-grid-list>
+                    <br>
+                        <md-button class="btn btn2" ng-click="addItem()"><a href="#/results">Submit</a></md-button>
+                    <br></br>
                 </div>
+            </div>
         </div>
     </div>
 
 </form>
+
     <script>
-        (function() {
+  (function() {
             // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
             if (!String.prototype.trim) {
                 (function() {
