@@ -234,7 +234,7 @@ angular.module('dreamsApp')
 
 
 angular.module('dreamsApp')
-  .controller('RecallController', ['$scope', '$location', function ($scope, $location) {
+  .controller('RecallController', ['$scope', '$location', function ($scope, $location, $http) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -242,6 +242,7 @@ angular.module('dreamsApp')
     ];
 
     $scope.step = 1;
+    $scope.tags
    $scope.items = '';
    $scope.name = '';
     var test = function(arr){
