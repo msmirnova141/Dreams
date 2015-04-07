@@ -25,39 +25,33 @@
     </div>
 
     <p>Items in your list:</p>
-    <table ng-repeat="item in items | orderBy:'text'">
-        <tr>
-        <td id = "{{item.name}}" onclick="var y = getTheme(id)"width="100px">{{item.name}}</td>
-            <td id = "{{item.theme}}" onclick="var x = getTheme(id)"width="100px">{{item.theme}}</td>
-            <td ng-repeat="symbols in item.symbols"width="100px">{{symbols}}</td>
-            <!-- <td width="150px">{{item.timeStamp}}</td> -->
-            <td>
-                <md-button class="btn-primary" ng-click="deleteItem(item.id)">delete this shittttt</md-button>
-            </td> 
-        </tr> 
-    </table>
-    <div class="container">
+        <div class="container">
         <div class="content">
             <ul class="ca-menu">
-                <li>
+                <li ng-repeat="item in items | orderBy:'text'">
                     <a>
                         <div class="ca-content">
-                            <h3 class="ca-main">My First Dream</h3>
-                            <p class="ca-sub">description</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <div class="ca-content">
-                            <h3 class="ca-main">My Second Dream</h3>
-                            <p class="ca-sub">description</p>
+                            <h3 id = "{{item.name}}" onclick="var y = getTheme(id)"class="ca-main">{{item.name}}</h3>
+                            <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">{{item.theme}}</p>
+                            <p ng-repeat="symbols in item.symbols" class="ca-sub">{{symbols}}</p>
+                            <md-button class="btn-primary ca-main" ng-click="deleteItem(item.id)">delete</md-button>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
+  <!--   
+    <tr>
+        <td id = "{{item.name}}" onclick="var y = getTheme(id)"width="100px">{{item.name}}</td>
+            <td id = "{{item.theme}}" onclick="var x = getTheme(id)"width="100px">{{item.theme}}</td>
+            <td ng-repeat="symbols in item.symbols"width="100px">{{symbols}}</td> -->
+            <!-- <td width="150px">{{item.timeStamp}}</td> -->
+<!--             <td>
+                <md-button class="btn-primary" ng-click="deleteItem(item.id)">delete this shittttt</md-button>
+            </td> 
+        </tr> 
+    </table> -->
   <!--   <div id="_giphy_tv"></div> -->
  <script type="text/javascript">
 //  function getTheme(item) {
