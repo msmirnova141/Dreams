@@ -1,4 +1,28 @@
 <div ng-controller="RecallController">
+    <div id="main-wrapper" class="wrapper">
+        <div class="menu-icon-container">
+            <div class="menu-icon">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </div>
+        </div>
+
+        <nav id="nav-menu">
+            <div class="menu-list-container" style="margin-bottom: 30px;">
+                <ul class="text-center" style="padding: 0px;">
+                    <li><a href="#/redream">HOME</a></li>
+                    <li><a href="#/refeel">CREATE NEW</a></li>
+                    <li><a style="color: #617590;"><b>RECALL</b></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="text-center" style="margin= 0">
+        <h1>RECALL</h1>
+        <h5>Which dream do you want to recall?</h5>
+    </div>
 
     <p>Items in your list:</p>
     <table ng-repeat="item in items | orderBy:'text'">
@@ -12,7 +36,28 @@
             </td> 
         </tr> 
     </table>
-
+    <div class="container">
+        <div class="content">
+            <ul class="ca-menu">
+                <li>
+                    <a>
+                        <div class="ca-content">
+                            <h3 class="ca-main">My First Dream</h3>
+                            <p class="ca-sub">description</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="ca-content">
+                            <h3 class="ca-main">My Second Dream</h3>
+                            <p class="ca-sub">description</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
   <!--   <div id="_giphy_tv"></div> -->
  <script type="text/javascript">
 //  function getTheme(item) {
@@ -28,7 +73,16 @@
 // var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
 
 // </script>
+<script>
+    (function(){
+        var $mainWrapper = $("#main-wrapper");
 
+        $('.menu-icon').click(function(){
+            $(this).toggleClass('active');
+            $mainWrapper.toggleClass('active');
+            });
+        })();
+</script>
 
 
 </div>
