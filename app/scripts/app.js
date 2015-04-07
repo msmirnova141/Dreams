@@ -20,7 +20,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngGiphy',
-    'ngTagsInput'
+    'ngTagsInput',
+    'adaptive.scroll'
   ])
   .config(function ($routeProvider) {
     $routeProvider
