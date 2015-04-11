@@ -2,16 +2,15 @@
 
 /**
  * @ngdoc overview
- * @name dreamsApp
+ * @name redreamApp
  * @description
- * # dreamsApp
+ * # redreamApp
  *
  * Main module of the application.
  */
 angular
-  .module('dreamsApp', [
+  .module('redreamApp', [
     'ngAnimate',
-    'ngCookies',
     'ngAria',
     'ngMessages',
     'ngResource',
@@ -21,33 +20,30 @@ angular
     'ngTouch',
     'ngGiphy',
     'ngTagsInput',
-    'adaptive.scroll'
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-    //home page
-    .when('/redream', {
+      .when('/redream', {
         templateUrl: 'views/redream.html',
         controller: 'RedreamCtrl'
       })
+      .when('/refeel', {
+        templateUrl: 'views/refeel.html',
+        controller: 'RecallCtrl'
+      })
 
-    .when('/refeel', {
-            templateUrl : 'views/refeel.html',
-            controller  : 'RecallController'
-        })
-
-
-    .when('/recall', {
+      .when('/recall', {
         templateUrl : 'views/recall.html',
-        controller  : 'RecallController'
-    })
+        controller  : 'RecallCtrl'
+      })
 
-    .when('/results', {
+      .when('/results', {
         templateUrl : 'views/results.html',
-        controller  : 'RecallController'
-    })
-    
-    .otherwise({
+        controller  : 'ResultsCtrl'
+      })
+
+      .otherwise({
         redirectTo: '/redream'
       });
   });

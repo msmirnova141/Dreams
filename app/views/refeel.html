@@ -1,8 +1,6 @@
+<div  ng-controller="RecallCtrl">
 
-<div  ng-controller="RecallController" 
-style="">
-
-
+    <!-- Hamburger Menu -->
     <div id="main-wrapper2" class="wrapper">
         <div class="menu-icon-container">
             <div class="menu-icon">
@@ -24,14 +22,13 @@ style="">
     </div>
 
 <form name="myform" ng-init="step = 1">
-    <div class="text-center" style="margin= 0">
-        <h1 style="margin = 0;" >REFEEL</h1>
-    <div>
+    <div class="text-center">
+        <h1>REFEEL</h1>
         <div ng-show= "step == 1">
             <div ng-form ="step1form">
-                <br><h6>Give your name a dream :)</h6></br>
-             <span class="input input--symbol">
-                    <input ng-model = "dreamsname" required class="input__field input__field--symbol" type="text" id="input-31" />
+                <br><h6>Give your dream a name :)</h6>
+                <span class="input input--symbol">
+                    <input ng-model = "name" required class="input__field input__field--symbol" type="text" id="input-31" />
                     <label class="input__label input__label--symbol" for="input-31">
                         <svg class="graphic graphic--symbol" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
@@ -39,27 +36,23 @@ style="">
                         <span class="input__label-content input__label-content--symbol"><h5>Title</h5></span>
                     </label>
                 </span>
-
             </div>
+            <br><br>
+            <h6>Type in some stuff that occurred in your dream</h6>
             <tags-input name="tags"
-                      ng-model="dreams.symbols" 
+                      ng-model="tags" 
                       add-on-blur="false"
                       min-tags="1"
                       max-tags="4"
                       allow-leftover-text="false">
-          </tags-input>
-<!--           <p>Model:{{dreams.symbols}}</p>
-          <p>name: {{dreams.name}}</p> -->
-           <md-button class="btn btn2" ng-disabled="!step1form.$valid" ng-click="step = 2">Next</md-button>
+            </tags-input>
+                <md-button class="btn btn2" ng-disabled="!step1form.$valid" ng-click="step = 2">Next</md-button>
         </div>
+
         <div ng-show= "step == 2">
             <div ng-form ="step2form"> 
-            <br><h5>Choose the theme of your dream</h5></br>
-<!--             <p>Model: {{dreams.symbols}}</p>
-            <p>name: {{dreams.name}}</p>
-            <p>theme: {{dreams.theme}}</p>  -->
-            <div>
-                 <div style="height: 470px; width: 100%;"id="selectme">
+                <br><h5>Choose the theme of your dream</h5></br>                
+                <div style="height: 470px; width: 100%;"id="selectme">
                     <md-grid-list
                             md-cols="1" 
                             md-row-height="200px"
@@ -71,55 +64,55 @@ style="">
                             md-row-height-gt-lg="300px"
                             md-gutter="0px" md-gutter-gt-sm="0px" >
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" class="theme" md-rowspan="0.5" md-colspan="1" style="background-image: url(images/naked.jpg);" ng-click="theme = 'Naked'">
+                            <md-grid-tile id="theme-bg" class="theme" md-rowspan="0.5" md-colspan="1" style="background-image: url(images/themes/naked.jpg);" ng-click="theme = 'Naked'">
                                 <h4>NAKED</h4>
                             </md-grid-tile>
                         </div>
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" style="background-image: url(images/death.jpg);" ng-click="theme= 'Death'">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/themes/death.jpg);" ng-click="theme= 'Death'">
                                 <h4>DEATH</h4>
                             </md-grid-tile> 
                         </div>             
                             
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" style="background-image: url(images/chasing.jpg);" ng-click="theme= 'Chasing'">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/themes/chasing.jpg);" ng-click="theme= 'Chasing'">
                                <h4>CHASING</h4>
                             </md-grid-tile>
                         </div>
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" style="background-image: url(images/falling.png);" ng-click="theme = 'Falling'">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/themes/falling.png);" ng-click="theme = 'Falling'">
                                <h4>FALLING</h4>
                             </md-grid-tile>
                         </div>
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" style="background-image: url(images/cheating.png);" ng-click="theme = 'Cheating'">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/themes/cheating.png);" ng-click="theme = 'Cheating'">
                                <h4>CHEATING</h4>
                             </md-grid-tile>            
                         </div>
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" style="background-image: url(images/flying.jpg);" ng-click="theme= 'Flying'">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/themes/flying.jpg);" ng-click="theme= 'Flying'">
                                <h4>FLYING</h4>
                             </md-grid-tile>
                         </div>
                         <div class="effect-jazz">
-                            <md-grid-tile id="theme-bg" style="background-image: url(images/random.jpg);" ng-click="theme = 'Abstract, Random'">
+                            <md-grid-tile id="theme-bg" style="background-image: url(images/themes/random.jpg);" ng-click="theme = 'Abstract, Random'">
                                <h4>RANDOM</h4>
                             </md-grid-tile>
                         </div>
                     </md-grid-list>
                     <br>
-                        <md-button class="btn btn2" ng-click="addItem()"><a href="#/results">Submit</a></md-button>
+                        <md-button class="btn btn2" ng-click="addItem()"><a style="text-decoration: none;" href="#/results">Submit</a></md-button>
                     <br></br>
                 </div>
             </div>
         </div>
     </div>
-
 </form>
+</div>
 
     <script>
-  (function() {
-            // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        //script for input title
+        (function() {
             if (!String.prototype.trim) {
                 (function() {
                     // Make sure we trim BOM and NBSP
@@ -152,7 +145,7 @@ style="">
             }
         })();
 
-            // For Demo purposes only (show hover effect on mobile devices)
+    // For Demo purposes only (show hover effect on mobile devices)
     [].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
         el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
     } );
@@ -167,7 +160,8 @@ style="">
         $('.selected').removeClass('selected');
         $(this).addClass('selected');
     });
-        (function(){
+    
+    (function(){
     var $mainWrapper = $("#main-wrapper2");
 
     $('.menu-icon').click(function(){
@@ -177,4 +171,3 @@ style="">
     })();
 
     </script>
-</div>

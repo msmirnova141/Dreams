@@ -21,6 +21,7 @@ h1
 {
   font-family: 'Amatic SC';
   letter-spacing: 0.1em;
+  text-align: center;
   color: #3E445B;
   font-size:50px;
   font-weight: 500;
@@ -110,9 +111,10 @@ md-grid-tile{
 #_giphy_tv
 {
   position: absolute;
-  width: 90%;
-  left: 1em;
-  right: 1em; 
+  width: 60%;
+  height: 60%;
+  margin-top: 8em;
+  margin-left: 4.5em;
 }
 
 /*Menu Styling*/

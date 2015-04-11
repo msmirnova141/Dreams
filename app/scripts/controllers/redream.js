@@ -2,16 +2,33 @@
 
 /**
  * @ngdoc function
- * @name dreamsApp.controller:RedreamCtrl
+ * @name redreamApp.controller:MainCtrl
  * @description
- * # RedreamCtrl
- * Controller of the dreamsApp
+ * # MainCtrl
+ * Controller of the redreamApp
  */
-angular.module('dreamsApp')
+angular.module('redreamApp')
   .controller('RedreamCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.start = false;
+
+    // we will store all of our form data in this object
+    $scope.formData = {};
+    
+    // function to process the form
+    $scope.processForm = function() 
+    {
+        // alert('awesome!');  
+    };
+
+    $scope.random = function() 
+    {
+        return 0.5 - Math.random();
+    }
+
   });
