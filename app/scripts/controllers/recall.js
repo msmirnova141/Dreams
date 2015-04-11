@@ -7,14 +7,36 @@
  * # AboutCtrl
  * Controller of the redreamApp
  */
+
+
+angular.module('redreamApp').run(function ($rootScope) {
+    $rootScope.$on('scope.stored', function (event, data) {
+        console.log("scope.stored", data);
+    });
+});
+angular.module('redreamApp').factory('Dreams', function ($rootScope) {
+    var mem = [];
+
+    return {
+        store: function (key, value) {
+          $rootScope.$emit('scope.stored', key);
+            mem[key] = value;
+        },
+        get: function (key) {
+            return mem[key];
+        }
+    };
+});
+
 angular.module('redreamApp')
-  .controller('RecallCtrl', function ($scope) {
+  .controller('RecallCtrl', function ($scope, Dreams) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
+    Dreams.store('RecallCtrl', $scope);
     $scope.step = 1;
    	$scope.items = '';
    	$scope.name = '';
@@ -51,6 +73,19 @@ angular.module('redreamApp')
 
 	$scope.theme = '';
 
+
+
+    $scope.buttonClick = function () {
+        console.log("RecallCtrl");
+        console.log("RecallCtrl::name", Dreams.get('RecallCtrl').tags);
+        console.log("ResultsCtrl::name", Dreams.get('ResultsCtrl').tags);
+        console.log("$scope::name", $scope.tags);
+    };
+
+    $scope.buttonClickOnTwoController = function () {
+        Dreams.get('ResultsCtrl').buttonClick();
+    };
+
 	var initCallback = function()
 	{
 	    getItems();
@@ -82,7 +117,15 @@ angular.module('redreamApp')
       // $('#dreamList').fadeOut('slow');
       dataStore.remove(item,getItems,errorCallback);
     }
- 
+     $scope.viewItem = function(item)
+    {
+      // $('#dreamList').fadeOut('slow');
+      dataStore.getItem(item,getItems,errorCallback);
+      $scope.name = '';
+      $scope.theme ='';
+      $scope.tags = '';
+    }
+
     $scope.addItem = function()
     {
         $scope.itemname = $scope.name;

@@ -1,5 +1,47 @@
 <div ng-controller="ResultsCtrl"> 
+		<style>
+  header {
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    background: black;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+    header.started {
+    background: #5da423;
+  }
 
+  .content {
+      padding-top: 50px;
+  }
+
+  .center {
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .button { width: auto; background: #2ba6cb; border: 1px solid #1e728c; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; color: white; cursor: pointer; display: inline-block; font-family: inherit; font-size: 14px; font-weight: bold; line-height: 1; margin: 0; padding: 10px 20px 11px; position: relative; text-align: center; text-decoration: none; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
+  .button:hover, .button:focus { color: white; background-color: #2284a1; }
+  .button:active { -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; }
+  .button.medium { font-size: 14px; }
+  .button.expand { width: 100%; text-align: center; }
+  .button.primary { background-color: #2ba6cb; border: 1px solid #1e728c; }
+  .button.primary:hover, .button.primary:focus { background-color: #2284a1; }
+  .button.success { background-color: #5da423; border: 1px solid #396516; }
+  .button.success:hover, .button.success:focus { background-color: #457a1a; }
+  .button.alert { background-color: #c60f13; border: 1px solid #7f0a0c; }
+  .button.alert:hover, .button.alert:focus { background-color: #970b0e; }
+  .button.secondary { background-color: #e9e9e9; color: #1d1d1d; border: 1px solid #c3c3c3; }
+  .button.secondary:hover, .button.secondary:focus { background-color: #d0d0d0; }
+
+		</style>
 	<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 	<!-- <div id="vrEnv" name="vrEnv" style:"width: 100%;height:100%"></div> -->
 
@@ -24,45 +66,37 @@
         </nav>
     </div>
 
-	<div id="extra2" class="text-center"> 
+	<div id="extra2" class="text-center" > 
 		<h1 style="margin = 0; right: 50%; left: 30%; position: absolute; color: white;">REDREAM</h1> 
 		<br>
-		<div id="_giphy_tv"></div>
+	<!-- 	<div id="_giphy_tv"></div> -->
+<!-- 
+		 <button ng-click="buttonClick()">
+        buttonClick on current scope
+    </button>
+    <button ng-click="buttonClickOnOneController()">
+        buttonClick on OneController's scope
+    </button> -->
 	</div> 
 </div>
 
 
-<aside id="calibrate-compass-popup" class="popup">
-	<p>
-		<strong>Calibrate your compass</strong> by moving your device in a figure 8 motion as shown below.
-	</p>
-	<p class="figure8">&infin;</p>
-	<button>Continue</button>
-</aside>
+    <header ng-class="{started:gyro.started}">
+        <button ng-hide="gyro.started" ng-click="start()" class="button primary medium">start</button>
+        <button ng-show="gyro.started" ng-click="stop()" class="button secondary medium">stop</button>
+    </header>
+    <section class="content">
+    
+        <h4 class="info" ng-hide="gyro.started">
+          Click start button to gyroscroll.
+        </h4>
+        <p ng-repeat="line in lines">
+          <img ng-src="http://lorempixel.com/300/200/?{{line}}" alt="lorempixel">
+        </p>
+        </section>
 
-<div id="extra">
-	<span id="controllername"></span>
-	<a id="controllertype" href="#" name="controllertype"></a>
-</div>
 
-<!-- <div style="margin-top: 230px;">
-	<md-content style="height: 400px; width: 90%; margin: 1em; background: transparent;" >
-		<div ng-controller="mediaCtrl">
-		    <div style="display: inline; white-space: nowrap;" class="slide" ng-repeat="gif in gifs">
-		      <span><img src="{{gif.images.fixed_height.url}}"></span>
-		    </div>
-		    <div>
-		    	<span style="margin-right: 200px;">I'm text</span>
-		    	<span>I'm text</span>
-		    </div>
-		</div>
-	</md-content>
-</div> -->
 <script>
-	var _giphy_tv_tag="dying";
-	var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
-	g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
 
 	(function(){
 	    var $mainWrapper = $("#main-wrapper3");
@@ -76,6 +110,7 @@
 		    $mainWrapper.toggleClass('active');
 		});
 	})();
+
 			
 </script>
 

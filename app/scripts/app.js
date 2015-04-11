@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'ngGiphy',
     'ngTagsInput',
-    'ngMaterial'
+    'ngMaterial',
+    'adaptive.scroll'
   ])
   .config(function ($routeProvider) {
     $routeProvider
