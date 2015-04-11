@@ -26,7 +26,7 @@ $scope.lines = [];
 
 	$scope.start = function(){
 		console.log('start');
-		$gyroscope.watchPosition(15);
+		$gyroscope.watchPosition(30);
 		$scope.gyro.started = true;
 	};
 
@@ -41,6 +41,7 @@ $scope.lines = [];
 	});
 	$gyroscope.onbeta(function(betaDiff){
 		console.log(betaDiff);
+		
 	});
 	$gyroscope.ongamma(function(gammaDiff){
 		console.log(gammaDiff);
@@ -63,10 +64,10 @@ $scope.lines = [];
             $scope.theseTags = Dreams.get('RecallCtrl').tags;
         console.log($scope.theseTags);
     };
-	var _giphy_tv_tag="cat";
-	var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
-	g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
+	// var _giphy_tv_tag="cat";
+	// var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
+	// g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
+	// var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
 
 
   });

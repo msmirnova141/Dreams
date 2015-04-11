@@ -1,5 +1,11 @@
-<div ng-controller="ResultsCtrl"> 
-		<style>
+
+<style>
+  [ng-cloak] { display: none; }
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   header {
     position: fixed; 
     top: 0; 
@@ -9,7 +15,8 @@
     line-height: 50px;
     text-align: center;
   }
-    header.started {
+
+  header.started {
     background: #5da423;
   }
 
@@ -20,6 +27,7 @@
   .center {
     text-align: center;
   }
+
   img {
     width: 100%;
     max-width: 300px;
@@ -27,6 +35,12 @@
     display: block;
     margin: 0 auto;
   }
+
+  .info {
+    padding: 10px;
+    text-align: center;
+  }
+
   .button { width: auto; background: #2ba6cb; border: 1px solid #1e728c; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; color: white; cursor: pointer; display: inline-block; font-family: inherit; font-size: 14px; font-weight: bold; line-height: 1; margin: 0; padding: 10px 20px 11px; position: relative; text-align: center; text-decoration: none; -webkit-transition: background-color 0.15s ease-in-out; -moz-transition: background-color 0.15s ease-in-out; -o-transition: background-color 0.15s ease-in-out; transition: background-color 0.15s ease-in-out; }
   .button:hover, .button:focus { color: white; background-color: #2284a1; }
   .button:active { -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; }
@@ -41,46 +55,9 @@
   .button.secondary { background-color: #e9e9e9; color: #1d1d1d; border: 1px solid #c3c3c3; }
   .button.secondary:hover, .button.secondary:focus { background-color: #d0d0d0; }
 
-		</style>
-	<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
-	<!-- <div id="vrEnv" name="vrEnv" style:"width: 100%;height:100%"></div> -->
+</style>
 
-	<!-- Hamburger Menu -->
-    <div id="main-wrapper3" class="wrapper">
-        <div class="menu-icon-container">
-            <div class="menu-icon">
-                <span class="bar1"></span>
-                <span class="bar2"></span>
-                <span class="bar3"></span>
-            </div>
-        </div>
-        <!-- Navigation Menu -->
-        <nav id="nav-menu">
-            <div class="menu-list-container" style="margin-bottom: 30px;">
-                <ul class="text-center" style="padding: 0px;">
-                    <li><a href="#/redream">HOME</a></li>
-                    <li><a href="#/refeel">CREATE NEW</a></li>
-                    <li><a style="color: #617590;"><b>RECALL</b></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-	<div id="extra2" class="text-center" > 
-		<h1 style="margin = 0; right: 50%; left: 30%; position: absolute; color: white;">REDREAM</h1> 
-		<br>
-	<!-- 	<div id="_giphy_tv"></div> -->
-<!-- 
-		 <button ng-click="buttonClick()">
-        buttonClick on current scope
-    </button>
-    <button ng-click="buttonClickOnOneController()">
-        buttonClick on OneController's scope
-    </button> -->
-	</div> 
-</div>
-
-
+<div adaptivescroll ng-controller="ResultsCtrl">
     <header ng-class="{started:gyro.started}">
         <button ng-hide="gyro.started" ng-click="start()" class="button primary medium">start</button>
         <button ng-show="gyro.started" ng-click="stop()" class="button secondary medium">stop</button>
@@ -93,24 +70,93 @@
         <p ng-repeat="line in lines">
           <img ng-src="http://lorempixel.com/300/200/?{{line}}" alt="lorempixel">
         </p>
-        </section>
+        
+        <h5 class="center">Credits:</h5>
+        <p class="center"><a href="http://twitter.com/janantala">Jan Antala</a></p>
+    </section>
+   
+</div>
 
+
+
+
+
+
+<!-- <div ng-controller="ResultsCtrl">  -->
+		<style>
+		</style>
+	<!-- <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div> -->
+	<!-- <div id="vrEnv" name="vrEnv" style:"width: 100%;height:100%"></div> -->
+
+	<!-- Hamburger Menu -->
+<!-- 
+	 <header ng-class="{started:gyro.started}">
+        <button ng-hide="gyro.started" ng-click="start()" class="button primary medium">start</button>
+        <button ng-show="gyro.started" ng-click="stop()" class="button secondary medium">stop</button>
+    </header>
+    <div id="main-wrapper3" class="wrapper">
+        <div class="menu-icon-container">
+            <div class="menu-icon">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </div>
+        </div> -->
+        <!-- Navigation Menu -->
+<!--         <nav id="nav-menu">
+            <div class="menu-list-container" style="margin-bottom: 30px;">
+                <ul class="text-center" style="padding: 0px;">
+                    <li><a href="#/redream">HOME</a></li>
+                    <li><a href="#/refeel">CREATE NEW</a></li>
+                    <li><a style="color: #617590;"><b>RECALL</b></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+ -->
+<!-- 	<div id="extra2" class="text-center" >  -->
+<!-- 		<h1 style="margin = 0; right: 50%; left: 30%; position: absolute; color: white;">REDREAM</h1> 
+		<br> -->
+	<!-- 	<div id="_giphy_tv"></div> -->
+<!-- 
+		 <button ng-click="buttonClick()">
+        buttonClick on current scope
+    </button>
+    <button ng-click="buttonClickOnOneController()">
+        buttonClick on OneController's scope
+    </button> -->
+
+
+
+
+<!--     <section class="content">
+    
+        <h4 class="info" ng-hide="gyro.started">
+          Click start button to gyroscroll.
+        </h4>
+        <p ng-repeat="line in lines">
+          <img ng-src="http://lorempixel.com/300/200/?{{line}}" alt="lorempixel">
+        </p>
+      </section>
+
+</div> -->
 
 <script>
 
-	(function(){
-	    var $mainWrapper = $("#main-wrapper3");
+	// (function(){
+	//     var $mainWrapper = $("#main-wrapper3");
 
-	    $('.menu-icon').click(function(){
-	        $(this).toggleClass('active');
-	        $mainWrapper.toggleClass('active');
-	        });
-	    $('.menu-icon').on('tap',function(){
-			$(this).toggleClass('active');
-		    $mainWrapper.toggleClass('active');
-		});
-	})();
+	//     $('.menu-icon').click(function(){
+	//         $(this).toggleClass('active');
+	//         $mainWrapper.toggleClass('active');
+	//         });
+	//     $('.menu-icon').on('tap',function(){
+	// 		$(this).toggleClass('active');
+	// 	    $mainWrapper.toggleClass('active');
+	// 	});
+	// })();
 
 			
 </script>
+
 
