@@ -37,10 +37,11 @@ angular.module('redreamApp')
     ];
 
     Dreams.store('RecallCtrl', $scope);
-    $scope.step = 1;
+    $scope.new = false;
    	$scope.items = '';
    	$scope.name = '';
 
+    //turns object array to string array
     var test = function(arr)
     {
     	var newTags = [];
@@ -72,7 +73,7 @@ angular.module('redreamApp')
    	};
 
 	$scope.theme = '';
-
+  $scope.dream = [];
 
 
     $scope.buttonClick = function () {
@@ -96,11 +97,23 @@ angular.module('redreamApp')
 	var getItemsSuccess = function(data)
 	{
 	   	$scope.items = data;
-	   	console.log(data);
+     
+
+
 	    // http://jimhoskins.com/2012/12/17/angularjs-and-apply.html 
 	    $scope.$apply(); 
+
+      // console.log(items);
+
 	};
- 
+
+  var getDreamSuccess = function(data){
+    $scope.dream = data;
+    $scope.$apply(); 
+
+      console.log($scope.dream);
+  };
+
 	var errorCallback = function()
 	{
 	    console.log('error'); 
@@ -108,31 +121,37 @@ angular.module('redreamApp')
  
     var getItems = function(){
         dataStore.getAll(getItemsSuccess,errorCallback);
-        console.log(getItemsSuccess); 
+        // console.log(getItemsSuccess); 
 
     };
+    
+    var getItem = function(id){
+    dataStore.get(id,getDreamSuccess,errorCallback);
+    }
  
     $scope.deleteItem = function(item)
     {
-      // $('#dreamList').fadeOut('slow');
+
       dataStore.remove(item,getItems,errorCallback);
     }
      $scope.viewItem = function(item)
     {
-      // $('#dreamList').fadeOut('slow');
-      dataStore.getItem(item,getItems,errorCallback);
-      $scope.name = '';
-      $scope.theme ='';
-      $scope.tags = '';
+
+      $scope.new = false;
+      getItem(item);
+      console.log();
+
     }
 
     $scope.addItem = function()
     {
+        $scope.new = true;
         $scope.itemname = $scope.name;
         $scope.itemtheme = $scope.theme;
         $scope.itemsymbols = test($scope.tags);
-        console.log($scope.itemsymbols + $scope.itemname + $scope.itemthem );
-        dataStore.put({'timeStamp': new Date().getTime(), 'name' : $scope.itemname, 'theme' : $scope.itemtheme, 'symbols': $scope.itemsymbols},getItems,errorCallback); 
+        console.log($scope.new + $scope.itemsymbols + $scope.itemname + $scope.itemthem );
+        dataStore.put({'timeStamp': new Date().getTime(), 'name' : $scope.itemname, 
+          'theme' : $scope.itemtheme, 'symbols': $scope.itemsymbols},getItems,errorCallback); 
     };
 
     $scope.getSymbols = function(arr)

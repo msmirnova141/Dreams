@@ -14,7 +14,7 @@
             <div class="menu-list-container" style="margin-bottom: 30px;">
                 <ul class="text-center" style="padding: 0px;">
                     <li><a href="#/redream">HOME</a></li>
-                    <li><a href="#/refeel">CREATE NEW</a></li>
+                    <li><a href="#/refeel">NEW ENTRY</a></li>
                     <li><a style="color: #617590;"><b>RECALL</b></a></li>
                 </ul>
             </div>
@@ -32,11 +32,11 @@
         <div class="content">
             <ul class="ca-menu">
                 <li ng-repeat="item in items | orderBy:'text'">
-                    <a id="dreamList">
+                    <aid="dreamList">
                         <div class="ca-content">
                             <md-button class="btn md-tile-right" ng-click="deleteItem(item.id)" id="delete">x</md-button>
-                            <h3 id = "{{item.name}}" onclick="var y = getTheme(id)"class="ca-main">{{item.name}}</h3>
-                            <p id = "{{item.theme}}" onclick="var x = getTheme(id)"class="ca-sub">{{item.theme}} Dream</p>
+                            <h3 ng-click = "viewItem(item.id)" class="ca-main">{{item.name}}</h3>
+                            <p class="ca-sub">{{item.theme}} Dream</p>
                             <p style="line-height: 0;">Dream symbols: <span ng-repeat="symbols in item.symbols" class="ca-sub">{{symbols + ' '}}</span></p>
                         </div>
                     </a>
