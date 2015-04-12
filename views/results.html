@@ -1,0 +1,86 @@
+<div ng-controller="ResultsCtrl"> 
+
+	<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+	<!-- <video id="video" autoplay style="display:none">
+		<source src="videos/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'>
+	</video> -->
+	<div id="vrEnv" name="vrEnv" style:"width: 100%;height:100%"></div>
+
+	<!-- Hamburger Menu -->
+    <div id="main-wrapper3" class="wrapper">
+        <div class="menu-icon-container" style="">
+            <div class="menu-icon">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </div>
+        </div>
+        <!-- Navigation Menu -->
+        <nav id="nav-menu">
+            <div class="menu-list-container" style="margin-bottom: 30px;">
+                <ul class="text-center" style="padding: 0px;">
+                    <li><a href="#/redream">HOME</a></li>
+                    <li><a href="#/refeel">NEW ENTRY</a></li>
+                    <li><a href="#/recall">RECALL</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+	<div id="extra2" class="text-center"> 
+		<h1 style="margin = 0; right: 50%; left: 30%; position: absolute; color: white;">REDREAM</h1> 
+		<br>
+		<div style="width:180px;"id="_giphy_tv"></div>
+	</div> 
+</div>
+
+
+<aside id="calibrate-compass-popup" class="popup">
+	<p>
+		<strong>Calibrate your compass</strong> by moving your device in a figure 8 motion as shown below.
+	</p>
+	<p class="figure8">&infin;</p>
+	<button>Continue</button>
+</aside>
+
+<div id="extra">
+	<span id="controllername"></span>
+	<a id="controllertype" href="#" name="controllertype"></a>
+</div>
+<div></div>
+<!-- <div style="margin-top: 230px;">
+	<md-content style="height: 400px; width: 90%; margin: 1em; background: transparent;" >
+		<div ng-controller="mediaCtrl">
+		    <div style="display: inline; white-space: nowrap;" class="slide" ng-repeat="gif in gifs">
+		      <span><img src="{{gif.images.fixed_height.url}}"></span>
+		    </div>
+		    <div>
+		    	<span style="margin-right: 200px;">I'm text</span>
+		    	<span>I'm text</span>
+		    </div>
+		</div>
+	</md-content>
+</div> -->
+<script>
+	// var _giphy_tv_tag="japan";
+	// var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
+	// g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
+	// var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
+
+	(function(){
+	    var $mainWrapper = $("#main-wrapper3");
+
+	    $('.menu-icon').click(function(){
+	        $(this).toggleClass('active');
+	        $mainWrapper.toggleClass('active');
+	        });
+	    $('.menu-icon').on('tap',function(){
+			$(this).toggleClass('active');
+		    $mainWrapper.toggleClass('active');
+		});
+	})();
+
+
+	
+</script>
+
